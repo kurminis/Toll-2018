@@ -25,6 +25,7 @@ project(':server-core') {
 
 project(':tracker-core') {
     dependencies {
+        apply plugin: 'java-library-distribution'
         compile project(':common')
     }
 }
