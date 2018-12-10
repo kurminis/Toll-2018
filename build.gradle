@@ -19,6 +19,7 @@ project(':common') {
 
 project(':server-core') {
     dependencies {
+        apply plugin: 'java-library-distribution'
         compile project(':common')
     }
 }
