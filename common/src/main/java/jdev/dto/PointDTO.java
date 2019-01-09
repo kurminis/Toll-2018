@@ -6,7 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PointDTO {
     private double lat;
     private double lon;
-    private String autoId;
+
+
+
+    private double alt;
+    private int speed;
+   // private String autoId;
 
     public double getLat() {
         return lat;
@@ -14,6 +19,14 @@ public class PointDTO {
 
     public void setLat(double lat) {
         this.lat = lat;
+    }
+
+    public void setAlt(double alt) {
+        this.alt = alt;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public double getLon() {
@@ -24,12 +37,20 @@ public class PointDTO {
         this.lon = lon;
     }
 
-    public String getAutoId() {
-        return autoId;
+//    public String getAutoId() {
+//        return autoId;
+//    }
+
+//   // public void setAutoId(String autoId) {
+//        this.autoId = autoId;
+//    }
+
+    public double getAlt() {
+        return alt;
     }
 
-    public void setAutoId(String autoId) {
-        this.autoId = autoId;
+    public int getSpeed() {
+        return speed;
     }
 
     public String toJson() throws JsonProcessingException {
@@ -37,12 +58,12 @@ public class PointDTO {
         return mapper.writeValueAsString(this);
     }
 
-    @Override
-    public String toString() {
-        return "PointDTO{" +
-                "lat=" + lat +
-                ", lon=" + lon +
-                ", autoId='" + autoId + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "PointDTO{" +
+//                "lat=" + lat +
+//                ", lon=" + lon +
+//                ", autoId='" + autoId + '\'' +
+//                '}';
+//    }
 }
