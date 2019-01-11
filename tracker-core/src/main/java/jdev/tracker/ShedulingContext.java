@@ -17,13 +17,13 @@ public class ShedulingContext {
         return new ServiceGPS();
     }
 
-    @Bean DataStoreService dataStoreService()
+    @Bean DataStoreService storeService()
     {
         return new DataStoreService();
     }
 
     @Bean
-    DataSendService dataStoreService()
+    DataSendService sendService()
     {
         return new DataSendService();
     }

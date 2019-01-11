@@ -1,6 +1,7 @@
 package jdev.services;
 
 import jdev.dto.PointDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,10 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 @Service
 public class ServiceGPS {
+
+
+    @Autowired
+    private DataStoreService dataStoreService;
 
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
     private int count;
@@ -23,5 +28,6 @@ public class ServiceGPS {
         point.setSpeed(65);
         System.out.println(count++ + "--"+point.toJson());
         queue.put(point.toJson());
+        dataStoreService.saveData();
     }
 }
