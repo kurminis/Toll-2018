@@ -1,5 +1,7 @@
 package jdev.tracker;
 
+import jdev.services.DataSendService;
+import jdev.services.DataStoreService;
 import jdev.services.ServiceGPS;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +15,17 @@ public class ShedulingContext {
     @Bean
     public ServiceGPS serviceGPS() {
         return new ServiceGPS();
+    }
+
+    @Bean DataStoreService dataStoreService()
+    {
+        return new DataStoreService();
+    }
+
+    @Bean
+    DataSendService dataStoreService()
+    {
+        return new DataSendService();
     }
 
     @Bean
