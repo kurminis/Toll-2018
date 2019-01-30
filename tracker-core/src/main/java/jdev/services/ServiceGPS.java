@@ -9,9 +9,12 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @Service
 public class ServiceGPS {
+
+    private static Logger log = Logger.getLogger(ServiceGPS.class.getName());
 
 
 // Подключаем зависимость сохранение данных
@@ -26,13 +29,14 @@ public class ServiceGPS {
 //Каждую секунду получаем данные и складываем в очередь
     @Scheduled (fixedDelay = 1000)
     void tick() throws Exception {
-        System.out.println("---Получаем координаты и складываем в очередь каждую 1 секунду---");
+        //System.out.println("---Получаем координаты и складываем в очередь каждую 1 секунду---");
+        log.info("---Получаем координаты и складываем в очередь каждую 1 секунду---");
         PointDTO point = new PointDTO();
         point.setAlt(25.0);
         point.setLat(35.0+count1++);
         point.setLon(45.0+count1++);
         point.setSpeed(65);
-        System.out.println("Координаты-"+point.toJson()); //Получаем координаты
+        log.info("Координаты-"+point.toJson()); //Получаем координаты
         queue.put(point.toJson()); //Складываем координаты в очередь
 
     }
@@ -41,7 +45,7 @@ public class ServiceGPS {
 // Каждую секунду отправляем данные в хранилище
     @Scheduled (fixedDelay = 1000, initialDelay = 3000)
     void store() throws Exception {
-        System.out.println("---Сохраняем координаты---");
+        log.info("---Сохраняем координаты---");
 
             dataStoreService.saveData(queue);
 

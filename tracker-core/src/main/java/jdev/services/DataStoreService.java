@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @Service
 public class DataStoreService {
-
+    private static Logger log = Logger.getLogger(ServiceGPS.class.getName());
 //Подключаем зависимость - отправка данных на сервер (выводим в консоль)
     @Autowired
     private DataSendService dataSendService;
@@ -19,7 +20,7 @@ public class DataStoreService {
 
     public void saveData(BlockingDeque<String> queue) throws Exception {
         queue_store.put(queue.poll());
-        System.out.println("Сохраняю данные. Размер очереди = "+queue_store.size());
+        log.info("Сохраняю данные. Размер очереди = "+queue_store.size());
     }
 
 //Каждые 10 секунд отправляем данные на сервер (выводим в консоль)
