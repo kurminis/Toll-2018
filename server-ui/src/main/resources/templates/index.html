@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Server-ui</title>
+</head>
+<body>
+    <center>
+        <h1  th:inline="text">Добро пожаловать в Server-ui</h1>
+    </center>
+    <p>Клиент: <a th:href="@{/routes}">трэки</a>, <a th:href="@{/payments}">оплата</a></p>
+    <p>Мэнеджер: <a th:href="@{/registerclient}">Регистрация клиента</a></p>
+    <p>Админ: <a th:href="@{/registermanager}">Регистрация менеджера</a></p>
+</body>
+</html>

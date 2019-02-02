@@ -3,10 +3,8 @@ package controllers;
 public class Response {
     boolean success;
 
-
     public Response(boolean success) {
         this.success=success;
-
     }
 
     public boolean getSuccess() {
@@ -16,6 +14,5 @@ public class Response {
     public void setSuccess(boolean success) {
         this.success = success;
     }
-
 
 }

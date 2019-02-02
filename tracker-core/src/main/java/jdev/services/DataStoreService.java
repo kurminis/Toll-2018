@@ -15,7 +15,6 @@ public class DataStoreService {
 //Подключаем зависимость - отправка данных на сервер (выводим в консоль)
     @Autowired
     private DataSendService dataSendService;
-
     private BlockingDeque<String> queue_store = new LinkedBlockingDeque<>(30);  // очередь хранения полученных координат
 
     public void saveData(BlockingDeque<String> queue) throws Exception {
@@ -28,5 +27,4 @@ public class DataStoreService {
     void savedata() throws Exception {
         dataSendService.sendData(queue_store);
     }
-
 }

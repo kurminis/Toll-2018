@@ -16,8 +16,6 @@ public class TestRequest {
         point1.setSpeed(85);
         str=point1.toJson();
         System.out.println(point1.getAlt());
-        //System.out.println(str);
-
         String resultall=restTemplate.postForObject("http://localhost:8080/counter",str,String.class);
         System.out.println(resultall);
     }

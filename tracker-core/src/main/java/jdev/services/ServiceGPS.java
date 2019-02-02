@@ -16,20 +16,16 @@ public class ServiceGPS {
 
     private static Logger log = Logger.getLogger(ServiceGPS.class.getName());
 
-
 // Подключаем зависимость сохранение данных
     @Autowired
     private DataStoreService dataStoreService;
-
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(30);
     private int count;
     private int count1;
 
-
 //Каждую секунду получаем данные и складываем в очередь
     @Scheduled (fixedDelay = 1000)
     void tick() throws Exception {
-        //System.out.println("---Получаем координаты и складываем в очередь каждую 1 секунду---");
         log.info("---Получаем координаты и складываем в очередь каждую 1 секунду---");
         PointDTO point = new PointDTO();
         point.setAlt(25.0);
@@ -38,20 +34,12 @@ public class ServiceGPS {
         point.setSpeed(65);
         log.info("Координаты-"+point.toJson()); //Получаем координаты
         queue.put(point.toJson()); //Складываем координаты в очередь
-
     }
-
 
 // Каждую секунду отправляем данные в хранилище
     @Scheduled (fixedDelay = 1000, initialDelay = 3000)
     void store() throws Exception {
         log.info("---Сохраняем координаты---");
-
             dataStoreService.saveData(queue);
-
-
     }
-
-
-
 }
